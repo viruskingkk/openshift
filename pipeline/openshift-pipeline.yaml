@@ -52,6 +52,10 @@ spec:
           value: $(params.image-name)
         - name: DOCKERFILE
           value: "./Dockerfile"
+        - name: CONTEXT
+          value: "."
+        - name: TLSVERIFY
+          value: "false"
       workspaces:
         - name: source
           workspace: shared-workspace
