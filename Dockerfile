@@ -12,18 +12,21 @@ RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit
 FROM node:20-alpine
 WORKDIR /app
 
-# 從 builder 階段複製依賴與檔名配置
+# 從 builder 階段複製依賴
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+
+# 【關鍵修正】複製 server.js 以及 public 資料夾（包含作品集靜態檔案）
 COPY server.js ./
+COPY public/ ./public/
 
 EXPOSE 8080
 
 # 調整檔案權限以符合 OpenShift Arbitrary User ID (UID) 安全規範
 RUN chown -R 1001:0 /app && chmod -R g+rwX /app
 
-# 指定非 root 使用者 (OpenShift 預設會以隨機 UID 執行，屬於 root 群組 gid=0)
+# 指定非 root 使用者
 USER 1001
 
-# 直接以 node 啟動，避免 npm start 額外開製子程序並正確處理 SIGTERM 訊號
+# 直接以 node 啟動，正確處理 SIGTERM 訊號
 CMD ["node", "server.js"]
