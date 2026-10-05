@@ -1,77 +1,630 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>個人作品集 Portfolio</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
-    header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1e293b, #0f172a); padding: 20px; }
-    h1 { font-size: 3rem; margin-bottom: 1rem; color: #38bdf8; }
-    p.subtitle { font-size: 1.25rem; color: #94a3b8; max-width: 600px; margin-bottom: 2rem; }
-    .btn { display: inline-block; padding: 12px 24px; background-color: #0284c7; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background 0.3s; }
-    .btn:hover { background-color: #0369a1; }
-    section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
-    h2 { font-size: 2rem; text-align: center; margin-bottom: 40px; color: #38bdf8; position: relative; }
-    h2::after { content: ''; display: block; width: 50px; height: 4px; background: #0284c7; margin: 10px auto 0; border-radius: 2px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .card { background: #1e293b; border-radius: 12px; padding: 24px; border: 1px solid #334155; transition: transform 0.3s, box-shadow 0.3s; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    .card h3 { font-size: 1.4rem; color: #f1f5f9; margin-bottom: 12px; }
-    .card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag { background: #0284c722; color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
-    footer { text-align: center; padding: 30px; background: #020617; color: #64748b; font-size: 0.9rem; border-top: 1px solid #1e293b; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRE & DevOps Operations Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#111827',
+                        borderBg: '#1f2937',
+                        accentBlue: '#3b82f6',
+                        accentGreen: '#10b981',
+                        accentRed: '#ef4444',
+                        accentYellow: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    </style>
 </head>
-<body>
+<body class="bg-darkBg text-gray-100 min-h-screen flex flex-col antialiased">
 
-  <header>
-    <h1>👋 您好，我是 雲端架構與 O&M 工程師</h1>
-    <p class="subtitle">專注於 GitOps、CI/CD 自動化流程部署、Kubernetes 及 OpenShift 雲端架構設計。</p>
-    <a href="#projects" class="btn">瀏覽作品與專案</a>
-  </header>
-
-  <section id="projects">
-    <h2>精選專案 (Projects)</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🚀 OpenShift GitOps CI/CD</h3>
-        <p>基於 Red Hat OpenShift 及 Tekton Pipelines 建立自動化構建與部署流程，實現代碼變更即時滾動更新。</p>
-        <div class="tags">
-          <span class="tag">OpenShift</span>
-          <span class="tag">Tekton</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Kubernetes</span>
+    <!-- Top Navigation Header -->
+    <header class="border-b border-borderBg bg-cardBg px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <i class="fa-solid fa-server text-accentBlue text-2xl"></i>
+            <span class="text-xl font-bold tracking-wide">OPS HUB & SRE Platform Center</span>
+            <span class="bg-blue-900/50 text-blue-400 text-xs px-2 py-0.5 rounded border border-blue-700">PROD ONLY</span>
         </div>
-      </div>
-
-      <div class="card">
-        <h3>⚡ 微服務監控與日誌收集</h3>
-        <p>整合 Prometheus、Grafana 與 ELK 堆疊，實時監控微服務架構節點健康度與日誌分析。</p>
-        <div class="tags">
-          <span class="tag">Prometheus</span>
-          <span class="tag">Grafana</span>
-          <span class="tag">Elasticsearch</span>
+        <div class="flex items-center space-x-4 text-sm text-gray-400">
+            <div><i class="fa-solid fa-signal text-accentGreen mr-1"></i> System Normal</div>
+            <div class="border-l border-gray-700 h-4"></div>
+            <div><i class="fa-solid fa-user-shield text-gray-300 mr-1"></i> Admin</div>
         </div>
-      </div>
+    </header>
 
-      <div class="card">
-        <h3>📦 雲端自動化擴充擴充架構</h3>
-        <p>運用 HPA 與 Custom Metrics 打造彈性伸縮的雲端部署，有效應對高流量突發併發。</p>
-        <div class="tags">
-          <span class="tag">AWS</span>
-          <span class="tag">Cloud Architecture</span>
-          <span class="tag">DevOps</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-6 space-y-10">
 
-  <footer>
-    <p>© 2026 Deployed on Red Hat OpenShift Service on AWS (ROSA)</p>
-  </footer>
+        <!-- Banner / OPS HUB Stats (截圖 2) -->
+        <section class="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-purple-900/40 border border-blue-800/50 rounded-xl p-6 shadow-lg">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-white mb-2">所有維運工具，一站快速開啟</h1>
+                    <p class="text-gray-300 text-sm">集中管理 Harbor, Kuboard, NACOS, Jenkins, Grafana, Elasticsearch 與其他 DevOps 工具。</p>
+                </div>
+                <div class="flex space-x-4 text-center">
+                    <div class="bg-cardBg/80 px-4 py-2 rounded-lg border border-borderBg">
+                        <div class="text-2xl font-bold text-accentBlue">37</div>
+                        <div class="text-xs text-gray-400">工具總數</div>
+                    </div>
+                    <div class="bg-cardBg/80 px-4 py-2 rounded-lg border border-borderBg">
+                        <div class="text-2xl font-bold text-accentGreen">37</div>
+                        <div class="text-xs text-gray-400">目前服務中</div>
+                    </div>
+                    <div class="bg-cardBg/80 px-4 py-2 rounded-lg border border-borderBg">
+                        <div class="text-2xl font-bold text-purple-400">4</div>
+                        <div class="text-xs text-gray-400">跨環境區域</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OPS HUB 工具分類入口 (截圖 2) -->
+        <section class="space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <h2 class="text-xl font-bold flex items-center gap-2 text-white">
+                    <i class="fa-solid fa-cubes text-accentBlue"></i> OPS HUB 集中入口 (30+ 維運工具)
+                </h2>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button class="bg-accentBlue text-white px-3 py-1.5 rounded-md font-medium">全部 37</button>
+                    <button class="bg-cardBg border border-borderBg hover:bg-gray-800 text-gray-300 px-3 py-1.5 rounded-md">常規工具 15</button>
+                    <button class="bg-cardBg border border-borderBg hover:bg-gray-800 text-gray-300 px-3 py-1.5 rounded-md">Stage 4</button>
+                    <button class="bg-cardBg border border-borderBg hover:bg-gray-800 text-gray-300 px-3 py-1.5 rounded-md">UAT 7</button>
+                    <button class="bg-cardBg border border-borderBg hover:bg-gray-800 text-gray-300 px-3 py-1.5 rounded-md">CLI 4</button>
+                    <button class="bg-cardBg border border-borderBg hover:bg-gray-800 text-gray-300 px-3 py-1.5 rounded-md">PROD 7</button>
+                </div>
+            </div>
+
+            <!-- Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Pipeline Tool</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">Pipeline 建置、版本部署自動化工具。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">GitLab GitOps</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">Kuboard GitOps 專屬與 Kubernetes 部署設定。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">ArgoCD</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">Kubernetes GitOps 持續部署與同步管理。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">ConfigMap Viewer</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">唯讀跨環境 Kubernetes ConfigMap 檢視。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Nacos UI</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">NACOS 設定檢視與管理入口。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+                <div class="bg-cardBg border border-borderBg rounded-lg p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Harbor</h3>
+                            <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">常規工具</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-4">Trevi Harbor 容器鏡像倉庫。</p>
+                    </div>
+                    <button class="w-full bg-accentBlue hover:bg-blue-600 text-white text-xs font-semibold py-2 rounded">開啟工具</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Release Console / Pipeline Tool & PROD 管制 (截圖 3, 4, 5) -->
+        <section class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-rocket text-accentBlue"></i> Release Console / Pipeline 部署與歷史紀錄
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Pipeline Trigger (截圖 3) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-5 space-y-4">
+                    <h3 class="font-bold text-sm text-accentBlue flex items-center gap-2">
+                        <i class="fa-solid fa-bolt"></i> Pipeline Trigger
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="text-gray-400 block mb-1">部署模式</label>
+                            <input type="text" disabled value="⚡ 全自動 — Build → 推 Harbor → 部署到 K8s" class="w-full bg-gray-900 border border-gray-700 text-gray-300 p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="text-gray-400 block mb-1">1. Select Project (GAME_PROJECT)</label>
+                            <select class="w-full bg-gray-800 border border-gray-700 text-white p-2 rounded">
+                                <option>-- Choose Project --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 block mb-1">2. Select Environment (DEPLOY_ENV)</label>
+                            <select class="w-full bg-gray-800 border border-gray-700 text-white p-2 rounded">
+                                <option>-- Choose Environment --</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-2 pt-2">
+                            <button class="flex-1 bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 rounded">Trigger Pipeline</button>
+                            <button class="flex-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 py-2 rounded">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROD Image Update 管制區 (截圖 3, 5) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-5 space-y-4">
+                    <h3 class="font-bold text-sm text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lock"></i> PROD Image Update 正式環境管制
+                    </h3>
+                    <div class="bg-amber-950/30 border border-amber-800/50 p-3 rounded text-xs text-amber-300 space-y-2">
+                        <p class="font-semibold">⚠️ 正式環境操作警示</p>
+                        <p class="text-gray-300">僅允許更新 GitOps PROD 已存在的 Module，Image 必須已推至 Harbor。</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="text-gray-400 block mb-1">選擇 Project</label>
+                            <input type="text" value="tg110" class="w-full bg-gray-800 border border-gray-700 text-white p-2 rounded">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-gray-400 block">選擇 Module</label>
+                            <div class="bg-gray-900 p-2 rounded border border-gray-800 space-y-1 text-gray-300">
+                                <label class="flex items-center gap-2"><input type="checkbox"> centersvr-backend</label>
+                                <label class="flex items-center gap-2"><input type="checkbox"> game-client-h5-frontend</label>
+                                <label class="flex items-center gap-2"><input type="checkbox"> gamesvr-backend</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 解鎖密碼與安全隔離 (截圖 3) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-5 flex flex-col justify-center items-center text-center space-y-3">
+                    <i class="fa-solid fa-lock text-yellow-500 text-3xl"></i>
+                    <h4 class="font-bold text-sm text-white">此工具區需要密碼才能啟用</h4>
+                    <p class="text-xs text-gray-400">Flyway、Redis 與 RocketMQ 都屬於維運管制功能，請謹慎使用。</p>
+                    <div class="flex gap-2 w-full max-w-xs pt-2">
+                        <input type="password" placeholder="輸入解鎖密碼" class="bg-gray-800 border border-gray-700 px-3 py-1.5 rounded text-xs text-white w-full">
+                        <button class="bg-yellow-500 text-black font-bold px-4 py-1.5 rounded text-xs">解鎖</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 部署歷史紀錄表格 (截圖 4) -->
+            <div class="space-y-3 pt-4">
+                <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-accentBlue"></i> 部署歷史紀錄 (保留觸發者、Commit、Image 與結果)
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-300 border-collapse">
+                        <thead class="bg-gray-800 text-gray-400">
+                            <tr>
+                                <th class="p-2.5">時間</th>
+                                <th class="p-2.5">觸發者</th>
+                                <th class="p-2.5">Project</th>
+                                <th class="p-2.5">環境</th>
+                                <th class="p-2.5">Target</th>
+                                <th class="p-2.5">Branch</th>
+                                <th class="p-2.5">Commit</th>
+                                <th class="p-2.5">Image</th>
+                                <th class="p-2.5">模式</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800 bg-darkBg">
+                            <tr>
+                                <td class="p-2.5">2026-09-10 16:12:52</td>
+                                <td class="p-2.5">evans.c</td>
+                                <td class="p-2.5">PP</td>
+                                <td class="p-2.5"><span class="bg-blue-900/50 text-blue-400 px-1.5 py-0.5 rounded">stage</span></td>
+                                <td class="p-2.5">pp_go</td>
+                                <td class="p-2.5">—</td>
+                                <td class="p-2.5 text-blue-400">c02a1747</td>
+                                <td class="p-2.5 text-gray-400">harbor.trevi-dev.cc/pp/game-backend-api</td>
+                                <td class="p-2.5 text-emerald-400">⚡ 自動</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5">2026-09-08 14:31:07</td>
+                                <td class="p-2.5">evans.c</td>
+                                <td class="p-2.5">tg120</td>
+                                <td class="p-2.5"><span class="bg-red-900/50 text-red-400 px-1.5 py-0.5 rounded">prod</span></td>
+                                <td class="p-2.5">PROD Image Update</td>
+                                <td class="p-2.5">main</td>
+                                <td class="p-2.5 text-blue-400">—</td>
+                                <td class="p-2.5 text-gray-400">dev-to-harbor.reelx.fun/tg120/game-client-pch5-frontend</td>
+                                <td class="p-2.5 text-emerald-400">⚡ 自動</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ConfigMap & Nacos 設定檢視 (截圖 6, 7) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- ConfigMap Viewer (截圖 6) -->
+            <div class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-4">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-code text-emerald-400"></i> ConfigMap Viewer (跨環境唯讀檢視)
+                </h2>
+                <div class="bg-darkBg p-4 rounded-lg border border-borderBg space-y-3 text-xs">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-gray-400 block mb-1">環境</label>
+                            <select class="w-full bg-gray-800 border border-gray-700 text-white p-1.5 rounded"><option>PROD</option></select>
+                        </div>
+                        <div>
+                            <label class="text-gray-400 block mb-1">Namespace</label>
+                            <select class="w-full bg-gray-800 border border-gray-700 text-white p-1.5 rounded"><option>tg120-stage</option></select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-gray-400 block mb-1">ConfigMap / 資料鍵</label>
+                        <input type="text" disabled value="tg120-al01-bet-config / TG120_AL01_Bet1_Config.json" class="w-full bg-gray-900 border border-gray-800 text-cyan-400 p-1.5 rounded">
+                    </div>
+                    <div class="bg-black/80 p-3 rounded text-green-400 font-mono text-[11px] overflow-x-auto">
+                        <pre>{
+  "simulation_settings": {
+    "PLAYBET": 1,
+    "NUM_SIMULATIONS": 2000000000,
+    "MAX_WIN_MULTIPLIER": 10000,
+    "SUPERWIN_THRESHOLD": 20
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nacos 設定工具 (截圖 7) -->
+            <div class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-4">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-file-arrow-up text-blue-400"></i> Nacos 設定與複製工具
+                </h2>
+                <div class="bg-darkBg p-4 rounded-lg border border-borderBg space-y-4 text-xs">
+                    <div class="flex gap-2">
+                        <button class="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded">📁 上傳本地檔案</button>
+                        <button class="bg-accentBlue text-white px-3 py-1.5 rounded font-medium">📋 複製 Namespace</button>
+                        <button class="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded">📦 上傳 ConfigMap</button>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-gray-400 block">選擇環境</label>
+                        <div class="flex gap-2">
+                            <button class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded text-white">DEV</button>
+                            <button class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded text-white">PROD</button>
+                            <button class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded text-white">STG</button>
+                            <button class="bg-gray-800 border border-gray-700 px-4 py-1.5 rounded text-white">UAT</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 pt-4">提供本地檔案上傳、Namespace 跨區複製與 ConfigMap 自動同步。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ES Log Monitor & Lark 告警 (截圖 8, 9, 10) -->
+        <section class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-teal-400"></i> ES Log Monitor & Lark 智慧告警設定
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-xs">
+                <!-- 專案監控控管 (截圖 8) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-4 space-y-3">
+                    <h3 class="font-bold text-white text-sm">專案監控控管 (Error Log 納入)</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center bg-gray-900 p-2 rounded">
+                            <span>後端 (PP / KAFKA)</span>
+                            <span class="text-emerald-400">ON</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900 p-2 rounded">
+                            <span>視訊線 (TG001)</span>
+                            <span class="text-emerald-400">ON</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900 p-2 rounded">
+                            <span>雙數電子線 (TG102 ~ TG126)</span>
+                            <span class="text-emerald-400">ON</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-900 p-2 rounded">
+                            <span>單數電子線 (TG103 ~ TG139)</span>
+                            <span class="text-emerald-400">ON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 關鍵字/略過規則 (截圖 9) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-4 space-y-3">
+                    <h3 class="font-bold text-white text-sm">告警關鍵字 / 略過規則</h3>
+                    <div class="space-y-2">
+                        <label class="text-gray-400 block">略過關鍵字 (不發 Lark 告警)</label>
+                        <div class="bg-gray-900 p-2 rounded border border-gray-800 text-gray-300 font-mono">
+                            "error": "redis: nil"
+                        </div>
+                        <div class="bg-gray-900 p-2 rounded border border-gray-800 text-gray-300 font-mono">
+                            INFO / WARN
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lark Bot 與冷卻時間 (截圖 10) -->
+                <div class="bg-darkBg border border-borderBg rounded-lg p-4 space-y-3">
+                    <h3 class="font-bold text-white text-sm">Lark 告警 Bot 與冷卻設定</h3>
+                    <div class="space-y-2">
+                        <div class="bg-gray-900 p-2 rounded">
+                            <span class="text-gray-400 block">後端 / 視訊線 Lark Bot</span>
+                            <span class="text-emerald-400 text-[11px]">https://...7ff422</span>
+                        </div>
+                        <div class="bg-gray-900 p-2 rounded">
+                            <span class="text-gray-400 block">告警冷卻時間</span>
+                            <span class="text-white font-bold">12 小時 (同頻錯誤不重複發送)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROD 在線人數查詢 (截圖 11) -->
+        <section class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-users text-purple-400"></i> PROD 在線人數查詢 (Redis CLI UI 化)
+                </h2>
+                <div class="flex gap-2">
+                    <select class="bg-gray-800 border border-gray-700 text-white text-xs px-3 py-1.5 rounded"><option>TG001</option></select>
+                    <button class="bg-accentBlue text-white text-xs px-4 py-1.5 rounded font-medium">查詢</button>
+                </div>
+            </div>
+
+            <div class="bg-darkBg border border-borderBg rounded-lg p-6 flex flex-col items-center justify-center space-y-1">
+                <span class="text-xs text-gray-400">TG001 目前在線會員</span>
+                <span class="text-4xl font-extrabold text-white">166</span>
+            </div>
+
+            <!-- 在線會員名單列表 -->
+            <div class="bg-darkBg border border-borderBg rounded-lg p-4 space-y-3 text-xs">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-gray-300">▼ 在線會員名單 (166)</span>
+                    <input type="text" placeholder="搜尋會員名稱..." class="bg-gray-800 border border-gray-700 px-3 py-1 rounded text-white text-xs">
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-800 text-gray-400">
+                            <tr>
+                                <th class="p-2">Room</th>
+                                <th class="p-2">會員名稱 (Token)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800 text-gray-300 font-mono">
+                            <tr><td class="p-2">LM01</td><td class="p-2">TGB254f2879980d67dfbd63f8e1f859a23b64</td></tr>
+                            <tr><td class="p-2">LM01</td><td class="p-2">TGB25ef599d510abf2818029a362e166051dc</td></tr>
+                            <tr><td class="p-2">LM01</td><td class="p-2">TGB2544417581ac51b613a673f6ef1b2a9340</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Project Onboarding Portal (截圖 12, 13) -->
+        <section class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-diagram-project text-cyan-400"></i> Project Onboarding Portal (標準化專案接入)
+            </h2>
+
+            <!-- 四步接入說明 (截圖 12) -->
+            <div class="bg-darkBg border border-borderBg rounded-lg p-5 space-y-4">
+                <h3 class="text-xs font-bold text-gray-300">▼ 接入操作步驟</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded space-y-1">
+                        <div class="font-bold text-accentBlue">1. New Project</div>
+                        <p class="text-gray-400">填寫 Project、Room ID、DB 等基本資料。</p>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded space-y-1">
+                        <div class="font-bold text-accentBlue">2. Preview / Register</div>
+                        <p class="text-gray-400">預覽與 Register，寫入 GitOps 並 atomic commit 到 main。</p>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded space-y-1">
+                        <div class="font-bold text-accentBlue">3. Readiness</div>
+                        <p class="text-gray-400">確認 GitOps、DB、Redis、Secret、Image、Argo CD 就緒。</p>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded space-y-1">
+                        <div class="font-bold text-accentBlue">4. Activate</div>
+                        <p class="text-gray-400">驗證通過後 atomic commit Product Cutover 到 main。</p>
+                    </div>
+                </div>
+
+                <!-- 提示規則 (截圖 12) -->
+                <div class="space-y-2 text-xs">
+                    <div class="bg-amber-950/40 border border-amber-800/50 p-2.5 rounded text-amber-300">
+                        ⚠️ <strong>重要：</strong>Activate 會先完成 Readiness 驗證，驗證通過後直接 atomic commit Product Cutover 到 main，再由 Argo CD 啟用切換。
+                    </div>
+                    <div class="bg-red-950/40 border border-red-800/50 p-2.5 rounded text-red-300">
+                        🔄 <strong>Disable：</strong>直接 atomic commit 完整 Product Rollback 到 main，Commit 成功後停用 Product workloads 並恢復 Legacy backend。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 專案狀態與操作控制表 (截圖 13) -->
+            <div class="bg-darkBg border border-borderBg rounded-lg p-4 space-y-3 text-xs">
+                <h3 class="font-bold text-white text-sm">集中 Legacy / Product 狀態與操作</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-800 text-gray-400">
+                            <tr>
+                                <th class="p-2.5">Project</th>
+                                <th class="p-2.5">Type</th>
+                                <th class="p-2.5">Room</th>
+                                <th class="p-2.5">Target</th>
+                                <th class="p-2.5">Status</th>
+                                <th class="p-2.5">操作項目</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800 text-gray-300">
+                            <tr>
+                                <td class="p-2.5 font-bold">tg118</td>
+                                <td class="p-2.5">product</td>
+                                <td class="p-2.5">DC01</td>
+                                <td class="p-2.5">tg118_game</td>
+                                <td class="p-2.5"><span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded">Active</span></td>
+                                <td class="p-2.5 flex gap-1">
+                                    <button class="bg-gray-800 px-2 py-1 rounded hover:bg-gray-700">Readiness</button>
+                                    <button class="bg-gray-800 px-2 py-1 rounded hover:bg-gray-700">Config</button>
+                                    <button class="bg-red-900/40 text-red-300 border border-red-700/50 px-2 py-1 rounded">Disable</button>
+                                    <button class="bg-red-700 text-white px-2 py-1 rounded">Reset</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">tg120</td>
+                                <td class="p-2.5">product</td>
+                                <td class="p-2.5">AL01</td>
+                                <td class="p-2.5">tg120_game</td>
+                                <td class="p-2.5"><span class="bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded">Active</span></td>
+                                <td class="p-2.5 flex gap-1">
+                                    <button class="bg-gray-800 px-2 py-1 rounded hover:bg-gray-700">Readiness</button>
+                                    <button class="bg-gray-800 px-2 py-1 rounded hover:bg-gray-700">Config</button>
+                                    <button class="bg-red-900/40 text-red-300 border border-red-700/50 px-2 py-1 rounded">Disable</button>
+                                    <button class="bg-red-700 text-white px-2 py-1 rounded">Reset</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold">tg123</td>
+                                <td class="p-2.5">legacy</td>
+                                <td class="p-2.5">—</td>
+                                <td class="p-2.5">—</td>
+                                <td class="p-2.5"><span class="bg-gray-800 text-gray-400 px-2 py-0.5 rounded">Disabled</span></td>
+                                <td class="p-2.5 flex gap-1">
+                                    <button class="bg-gray-800 px-2 py-1 rounded hover:bg-gray-700">Readiness</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Incident Analyzer 事故診斷 (截圖 1) -->
+        <section class="bg-cardBg border border-borderBg rounded-xl p-6 space-y-6">
+            <div class="flex items-center justify-between border-b border-borderBg pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500"></i> Incident Analyzer 局發事故分析
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">PROD 局發事故分析 · Evidence Correlation · Recovery Tracking</p>
+                </div>
+                <span class="bg-red-500/20 text-red-400 text-xs px-3 py-1 rounded-full border border-red-500/30 font-semibold">P1 級別事故</span>
+            </div>
+
+            <!-- 分析輸入區 (截圖 1) -->
+            <div class="bg-darkBg p-4 rounded-lg border border-borderBg flex flex-col md:flex-row gap-4 items-end text-xs">
+                <div class="flex-1 space-y-1 w-full">
+                    <label class="text-gray-400">專案</label>
+                    <input type="text" value="TG001" class="w-full bg-gray-800 border border-gray-700 text-white p-2 rounded">
+                </div>
+                <div class="flex-1 space-y-1 w-full">
+                    <label class="text-gray-400">局號</label>
+                    <input type="text" value="LM01260830000122" class="w-full bg-gray-800 border border-gray-700 text-white p-2 rounded">
+                </div>
+                <button class="bg-accentBlue text-white font-bold px-6 py-2 rounded h-9">開始分析</button>
+            </div>
+
+            <!-- 分析結果細節 (截圖 1) -->
+            <div class="bg-darkBg rounded-lg p-5 border border-borderBg space-y-4 text-xs">
+                <div class="text-red-400 font-bold text-sm">
+                    ⚠️ 已建立事故追蹤，請查看 根因、觸發因素 與玩家事故鏈。
+                </div>
+                <h3 class="text-base font-bold text-white">結算生命週期未完成 ( SETTLEMENT_LIFECYCLE_INCOMPLETE )</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-cardBg p-3 rounded border border-borderBg space-y-1">
+                        <span class="text-gray-400 block">根因 (Root Cause)</span>
+                        <div class="font-semibold text-gray-200">GameSvr settlement lifecycle incomplete</div>
+                    </div>
+                    <div class="bg-cardBg p-3 rounded border border-borderBg space-y-1">
+                        <span class="text-gray-400 block">觸發因素 (Trigger Factor)</span>
+                        <div class="font-semibold text-amber-400">Redis CLUSTERDOWN</div>
+                    </div>
+                </div>
+
+                <!-- 數據統計卡片 (截圖 1) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-cardBg p-3 rounded border border-borderBg">
+                        <div class="text-xl font-bold text-white">17</div>
+                        <div class="text-gray-400 text-[11px]">1104 受影響玩家</div>
+                    </div>
+                    <div class="bg-cardBg p-3 rounded border border-borderBg">
+                        <div class="text-xl font-bold text-white">5</div>
+                        <div class="text-gray-400 text-[11px]">強踢玩家</div>
+                    </div>
+                    <div class="bg-cardBg p-3 rounded border border-borderBg">
+                        <div class="text-xl font-bold text-emerald-400">5 / 5</div>
+                        <div class="text-gray-400 text-[11px]">已恢復</div>
+                    </div>
+                    <div class="bg-cardBg p-3 rounded border border-borderBg">
+                        <div class="text-xl font-bold text-white">5</div>
+                        <div class="text-gray-400 text-[11px]">來源交易數</div>
+                    </div>
+                </div>
+
+                <!-- 證據狀態關聯卡片 (截圖 1) -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 pt-2">
+                    <div class="bg-emerald-950/40 border border-emerald-800/50 p-3 rounded">
+                        <div class="text-emerald-400 font-bold mb-1"><i class="fa-solid fa-check mr-1"></i> Confirmed</div>
+                        <div class="text-gray-300">來源局 Wallet deduction 成功。來源局發生 Redis CLUSTERDOWN。</div>
+                    </div>
+                    <div class="bg-amber-950/40 border border-amber-800/50 p-3 rounded">
+                        <div class="text-amber-400 font-bold mb-1"><i class="fa-solid fa-link mr-1"></i> Correlated</div>
+                        <div class="text-gray-300">Redis CLUSTERDOWN 玩家與下一局 1104 玩家存在身份重疊。</div>
+                    </div>
+                    <div class="bg-blue-950/40 border border-blue-800/50 p-3 rounded">
+                        <div class="text-blue-400 font-bold mb-1"><i class="fa-solid fa-circle-question mr-1"></i> Missing</div>
+                        <div class="text-gray-300">未觀測到來源局正常 round_over evidence。</div>
+                    </div>
+                    <div class="bg-red-950/40 border border-red-800/50 p-3 rounded">
+                        <div class="text-red-400 font-bold mb-1"><i class="fa-solid fa-xmark mr-1"></i> Contradicted</div>
+                        <div class="text-gray-300">pendingSkipped cohort 導致下一局 1104 pendingSlapped 玩家與下一局 overlap=0。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-borderBg bg-cardBg py-4 text-center text-xs text-gray-500">
+        DevOps & SRE Internal Operations Platform © 2026. All rights reserved.
+    </footer>
 
 </body>
 </html>
