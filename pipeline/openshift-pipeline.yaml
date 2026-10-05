@@ -1,1 +1,78 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: git-build-deploy-pipeline
+  namespace: viruskingkk-dev
+spec:
+  workspaces:
+    - name: shared-workspace
+  params:
+    - name: git-url
+      type: string
+      description: "Git Repo URL"
+    - name: git-revision
+      type: string
+      default: "main"
+    - name: image-name
+      type: string
+      default: "image-registry.openshift-image-registry.svc:5000/viruskingkk-dev/my-app:latest"
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: revision
+          value: $(params.git-revision)
+      workspaces:
+        - name: output
+          workspace: shared-workspace
 
+    - name: build-and-push-image
+      runAfter: [fetch-repository]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: buildah
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: IMAGE
+          value: $(params.image-name)
+        - name: DOCKERFILE
+          value: "./Dockerfile"
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+
+    - name: deploy-to-openshift
+      runAfter: [build-and-push-image]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: openshift-client
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: SCRIPT
+          value: |
+            oc apply -f k8s/deployment.yaml -n viruskingkk-dev
+            oc rollout restart deployment/my-app -n viruskingkk-dev
+            oc rollout status deployment/my-app -n viruskingkk-dev
+      workspaces:
+        - name: manifest-dir
+          workspace: shared-workspace
