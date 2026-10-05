@@ -1,16 +1,14 @@
 const express = require('express');
-const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const path = require('path');
 
-// 設定靜態檔案託管
-app.use(express.static(path.join(__dirname, 'public')));
+// 【關鍵修正】必須明確告訴 Express 把 /public 目錄作為靜態資源對外開放
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// 所有請求導向作品集 index.html
+// 或者是直接將整個專案根目錄下的 public 對應出去：
+// app.use(express.static('public'));
+
+// 您的前端 SPA Fallback 路由（通常會放在最下方）
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
