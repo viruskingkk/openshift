@@ -1,0 +1,12 @@
+{
+  "name": "openshift-portfolio-demo",
+  "version": "1.0.0",
+  "description": "DevOps & Cloud Native Portfolio Demo on OpenShift",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
