@@ -134,7 +134,7 @@
                 </div>
             </section>
 
-            <!-- 4. PORTFOLIO 實際作品截圖專區 (支援點擊放大) -->
+            <!-- 4. PORTFOLIO 實際作品截圖專區 (點擊圖片直接放大) -->
             <section id="portfolio" class="space-y-8">
                 <div>
                     <div class="text-xs font-bold text-cyan-400 tracking-widest uppercase mb-1">PORTFOLIO</div>
@@ -146,9 +146,8 @@
                     
                     <!-- 圖 1 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100331.png', 'OPS HUB 集中維運門戶')">
-                            <img src="public/image/2026-10-05-100331.png" alt="OPS HUB" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100331.png" alt="OPS HUB" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100331.png', 'OPS HUB 集中維運門戶')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">OPS HUB 集中維運門戶</h3>
@@ -158,9 +157,8 @@
 
                     <!-- 圖 2 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100421.png', 'Release Console / Pipeline Tool')">
-                            <img src="public/image/2026-10-05-100421.png" alt="Release Console" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100421.png" alt="Release Console" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100421.png', 'Release Console / Pipeline Tool')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Release Console / Pipeline Tool</h3>
@@ -170,9 +168,8 @@
 
                     <!-- 圖 3 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100442.png', '部署歷史紀錄')">
-                            <img src="public/image/2026-10-05-100442.png" alt="部署歷史紀錄" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100442.png" alt="部署歷史紀錄" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100442.png', '部署歷史紀錄')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">部署歷史紀錄</h3>
@@ -182,9 +179,8 @@
 
                     <!-- 圖 4 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100457.png', 'PROD Image Update')">
-                            <img src="public/image/2026-10-05-100457.png" alt="PROD Image Update" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100457.png" alt="PROD Image Update" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100457.png', 'PROD Image Update')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">PROD Image Update</h3>
@@ -194,9 +190,8 @@
 
                     <!-- 圖 5 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100513.png', 'ConfigMap Viewer')">
-                            <img src="public/image/2026-10-05-100513.png" alt="ConfigMap Viewer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100513.png" alt="ConfigMap Viewer" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100513.png', 'ConfigMap Viewer')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">ConfigMap Viewer</h3>
@@ -206,9 +201,8 @@
 
                     <!-- 圖 6 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100522.png', 'Nacos 設定工具')">
-                            <img src="public/image/2026-10-05-100522.png" alt="Nacos 設定工具" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100522.png" alt="Nacos 設定工具" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100522.png', 'Nacos 設定工具')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Nacos 設定工具</h3>
@@ -218,9 +212,8 @@
 
                     <!-- 圖 7 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100540.png', 'ES Log Monitor')">
-                            <img src="public/image/2026-10-05-100540.png" alt="ES Log Monitor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100540.png" alt="ES Log Monitor" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100540.png', 'ES Log Monitor')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">ES Log Monitor</h3>
@@ -230,9 +223,8 @@
 
                     <!-- 圖 8 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100554.png', '告警關鍵字與過濾規則')">
-                            <img src="public/image/2026-10-05-100554.png" alt="告警關鍵字與過濾規則" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100554.png" alt="告警關鍵字與過濾規則" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100554.png', '告警關鍵字與過濾規則')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">告警關鍵字 / 過濾規則</h3>
@@ -242,9 +234,8 @@
 
                     <!-- 圖 9 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100606.png', 'Lark 告警設定')">
-                            <img src="public/image/2026-10-05-100606.png" alt="Lark 告警設定" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100606.png" alt="Lark 告警設定" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100606.png', 'Lark 告警設定')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Lark 告警設定</h3>
@@ -254,9 +245,8 @@
 
                     <!-- 圖 10 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100621.png', 'Incident Analyzer')">
-                            <img src="public/image/2026-10-05-100621.png" alt="Incident Analyzer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100621.png" alt="Incident Analyzer" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100621.png', 'Incident Analyzer')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Incident Analyzer</h3>
@@ -266,9 +256,8 @@
 
                     <!-- 圖 11 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100638.png', 'PROD 在線人數查詢')">
-                            <img src="public/image/2026-10-05-100638.png" alt="PROD 在線人數查詢" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100638.png" alt="PROD 在線人數查詢" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100638.png', 'PROD 在線人數查詢')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">PROD 在線人數查詢</h3>
@@ -278,9 +267,8 @@
 
                     <!-- 圖 12 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100653.png', 'Project Onboarding')">
-                            <img src="public/image/2026-10-05-100653.png" alt="Project Onboarding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100653.png" alt="Project Onboarding" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100653.png', 'Project Onboarding')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Project Onboarding</h3>
@@ -290,9 +278,8 @@
 
                     <!-- 圖 13 -->
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden p-4 space-y-4">
-                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center cursor-pointer group relative" @click="openModal('public/image/2026-10-05-100715.png', 'Project Onboarding — 專案狀態與操作')">
-                            <img src="public/image/2026-10-05-100715.png" alt="Project Onboarding — 專案狀態與操作" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-400 text-xs font-mono">🔍 點擊放大</div>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 aspect-video flex items-center justify-center relative group">
+                            <img src="public/image/2026-10-05-100715.png" alt="Project Onboarding — 專案狀態與操作" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300" @click="openModal('public/image/2026-10-05-100715.png', 'Project Onboarding — 專案狀態與操作')" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-slate-500 font-mono\'>[ 圖片載入中 ]</span>'">
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white">Project Onboarding — 專案狀態與操作</h3>
